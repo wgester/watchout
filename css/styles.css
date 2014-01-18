@@ -1,5 +1,12 @@
 body {
   background-color: #444;
+  font-family: helvetica sans-serif;
+  color: white;
+  font-size: 36px;
+}
+
+h1 {
+  font-size: 48px;
 }
 
 .container {
@@ -10,11 +17,6 @@ body {
   top: 150px;
   left: 150px;
   margin: 0 auto 0;
-}
-
-h1 {
-  color: white;
-  font-family: sans-serif;
 }
 
 .enemy {

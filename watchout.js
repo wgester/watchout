@@ -6,9 +6,10 @@ $(document).ready(function(){
 
   var enemies = gameBoard
       .selectAll('circle')
-      .data(d3.range(50))
+      .data(d3.range(250))
       .enter()
       .append('circle')
+      .on('tick', collision)
       // .append('pattern')
       // .append('image')
       // .attr('xlink:href', './img/Shuriken.png')
@@ -34,6 +35,37 @@ $(document).ready(function(){
     .on("drag", function(d,i) {
         resetUser(d3.mouse(this));
     });
+
+  var collision = function(x, y){
+    if (Math.abs(x - userObject.attr('x')) < 9){ 
+      if (Math.abs(y - userObject.attr('y')) < 9){
+        resetScore();
+      }
+    }
+  };
+
+  var score = 0;
+
+  var updateScore = function(){
+    $('.score').html(""+score);
+  }
+
+  var resetScore = function(){
+    score = 0;
+  }
+
+  setInterval(function(){
+    score += 1;
+    updateScore();
+  }, 100);
+
+
+
+  setInterval(function(){
+    d3.selectAll('circle').each(function(cir){
+      collision(cir[0], cir[1]);
+    });
+  }, 1);
 
   var resetUser = function(coordinates){
     var x = coordinates[0];
