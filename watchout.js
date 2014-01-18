@@ -38,7 +38,14 @@ $(document).ready(function(){
   var resetUser = function(coordinates){
     var x = coordinates[0];
     var y = coordinates[1];
-    userObject.attr('x', x).attr('y', y);
+
+    (x < 0) && (x = 8);
+    (y < 0) && (y = 8);
+
+    (x > 600) && (x = 600-7);
+    (y > 400) && (y = 400-7);
+
+    userObject.attr('x', x-8).attr('y', y-8);
   }
 
   drag1.call(userObject);
