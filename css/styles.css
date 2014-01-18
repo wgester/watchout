@@ -20,3 +20,7 @@ h1 {
 .enemy {
   background-image: url('./Shuriken.png');
 }
+
+image {
+  opacity: 1;
+}
