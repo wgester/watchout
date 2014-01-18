@@ -37,8 +37,8 @@ $(document).ready(function(){
     });
 
   var collision = function(x, y){
-    if (Math.abs(x - userObject.attr('x')) < 9){ 
-      if (Math.abs(y - userObject.attr('y')) < 9){
+    if (Math.abs(x - userObject.attr('x')) < 18){ 
+      if (Math.abs(y - userObject.attr('y')) < 18){
         resetScore();
       }
     }
@@ -48,7 +48,10 @@ $(document).ready(function(){
 
   var updateScore = function(){
     $('.score').html(""+score);
+    (score > maxScore) && (maxScore = score);
+    $('.maxScore').html(""+maxScore);
   }
+  var maxScore = 0;
 
   var resetScore = function(){
     score = 0;
@@ -65,7 +68,7 @@ $(document).ready(function(){
     d3.selectAll('circle').each(function(cir){
       collision(cir[0], cir[1]);
     });
-  }, 1);
+  }, 4);
 
   var resetUser = function(coordinates){
     var x = coordinates[0];
